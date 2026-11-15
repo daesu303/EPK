@@ -72,6 +72,16 @@ a.card:hover{border-color:var(--acid);transform:translateY(-2px)}
 .contact .mail{font:600 18px var(--mono);color:var(--acid);user-select:all}
 .copy{margin-top:14px;background:none;border:1px solid var(--line);color:var(--txt);padding:8px 14px;border-radius:8px;cursor:pointer;font:13px var(--sans)}
 .hide{display:none!important}
+.clips{display:flex;gap:14px;align-items:stretch}
+.clip{margin:0;border-radius:14px;overflow:hidden;background:var(--p);border:1px solid var(--line);position:relative}
+.clip video{display:block;height:520px;width:100%;object-fit:cover}
+.clip.v{flex:0 0 auto;width:293px}
+.clip.h{flex:1 1 auto}
+.clip figcaption{position:absolute;left:12px;bottom:12px;font:600 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;background:rgba(0,0,0,.6);padding:6px 10px;border-radius:6px}
+@media(max-width:760px){.clips{flex-direction:column}.clip.v{width:100%}.clip video{height:auto;max-height:80vh}}
+.allpm{display:flex;justify-content:center;margin-top:22px}
+.allpm a{font:700 14px var(--mono);letter-spacing:.14em;padding:14px 26px;border-radius:12px;border:1px solid var(--acid);color:var(--acid);text-decoration:none}
+.allpm a:hover{background:var(--acid);color:#000}
 .rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
 .rel div{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:18px}
 .rel b{display:block;font-size:19px;letter-spacing:-.01em}
@@ -246,6 +256,15 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
   <div class="bio"><div id="bio"></div><div class="facts" id="facts"></div></div>
 </div></section>
 
+<section id="secClips"><div class="wrap">
+  <h2>Performance Clips</h2>
+  <div class="clips">
+    <figure class="clip v"><video src="vid/live-nexus.mp4" poster="vid/live-nexus.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Live @ Nexus Paris</figcaption></figure>
+    <figure class="clip h"><video src="vid/live-decks.mp4" poster="vid/live-decks.jpg" autoplay muted loop playsinline preload="metadata"></video><figcaption>Behind the decks</figcaption></figure>
+  </div>
+  <div class="allpm"><a href="https://drive.google.com/drive/folders/1E1F9kMkZ1Z6hfTv0dW5rU5a9fKvUt378?usp=sharing" target="_blank" rel="noopener">ALL PRESS MATERIAL</a></div>
+</div></section>
+
 <section id="secMedia"><div class="wrap">
   <h2>Listen & Watch</h2>
   <div class="cards" id="media"></div>
@@ -280,7 +299,7 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
     <a class="ph" href="img/press-2.jpg" target="_blank" rel="noopener"><img src="img/press-2.jpg" alt="DAESU / Tony Vectra live, green light" loading="lazy"></a>
     <a class="ph" href="img/press-3.jpg" target="_blank" rel="noopener"><img src="img/press-3.jpg" alt="DAESU / Tony Vectra at the mixer" loading="lazy"></a>
   </div>
-  <p id="presse" style="color:var(--mut);font-size:14px;margin-top:14px"></p>
+  <div class="allpm"><a href="https://drive.google.com/drive/folders/1E1F9kMkZ1Z6hfTv0dW5rU5a9fKvUt378?usp=sharing" target="_blank" rel="noopener">ALL PRESS MATERIAL</a></div>
 </div></section>
 
 <section id="secRider"><div class="wrap">
@@ -350,7 +369,6 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
     const up=gigs.filter(x=>x.datum>=today),past=gigs.filter(x=>x.datum<today).reverse();
     $("up").innerHTML=up.map(li).join("");show("secUp",up.length>0);
     $("past").innerHTML=past.map(li).join("");show("secPast",past.length>0);
-    $("presse").innerHTML=url(D.presse_link)?`High-res photos: <a href="${esc(url(D.presse_link))}" target="_blank" rel="noopener" style="color:var(--acid)">Download folder</a>`:"";
     const tech=lines(D.rider_technik),hosp=lines(D.rider_hospitality);
     $("tech").innerHTML=tech.map(x=>`<li>${esc(x)}</li>`).join("");show("cTech",tech.length>0);
     $("hosp").innerHTML=hosp.map(x=>`<li>${esc(x)}</li>`).join("");show("cHosp",hosp.length>0);
