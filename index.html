@@ -79,6 +79,10 @@ a.card:hover{border-color:var(--acid);transform:translateY(-2px)}
 .hl{list-style:none;padding:0;margin:0}
 .hl li{padding:13px 0;border-top:1px solid var(--line);font-size:17px}
 .hl li:first-child{border-top:0}
+.hl li.hlr{display:grid;grid-template-columns:120px 1fr auto;gap:16px;align-items:baseline}
+.hl .dt{font:14px var(--mono);color:var(--acid)}
+.hl .v{color:var(--mut);font-size:14px;text-align:right}
+@media(max-width:600px){.hl li.hlr{grid-template-columns:1fr}.hl .v{text-align:left}}
 .tabs{position:sticky;top:0;z-index:10;background:rgba(10,10,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .tabs .wrap{display:flex;align-items:center;gap:8px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
 .tabs .lbl{font:600 12px var(--mono);letter-spacing:.16em;color:var(--mut);text-transform:uppercase;margin-right:8px}
@@ -97,24 +101,24 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
   {
    "id": "daesu",
    "artist": "DAESU",
-   "tagline": "Old-school energy for today's dancefloors: acid techno, hardgroove and trance with the punch of the 90s and 2000s.",
-   "genres": "Acid Techno, Neorave, Hard Trance, Proper Techno - Pure Rave Music",
+   "tagline": "Old-school-inspired acid techno, neorave, hard trance, and hard bounce—90s/2000s energy with a modern edge.",
+   "genres": "Acid Techno, Neorave, Hard Trance, Hard Bounce, 90s/2000s Vibes",
    "bio": "DJ and producer from Cologne, Germany, and founder of HYPERRAVE, a party series and label for old-school-inspired, genre-fluid electronic music.\n\nHis sets draw a line from UK acid techno and 90s German techno through hardgroove to hard trance: driving, hypnotic, full of 303 lines and goosebump moments.\n\nReleases on labels like: Stay Up Forever, ERROR303, New Glam, Trashtek, ANGST",
    "basis": "Cologne, Germany",
    "bpm": "140-160",
    "setlaenge": "1–3 h · warm-up to closing",
    "setup": "Preferably Allen & Heath Xone:92/96",
    "reise": "International",
-   "mix1_titel": "",
+   "mix1_titel": "PROMO MIX",
    "mix1_info": "",
-   "mix1_link": "",
+   "mix1_link": "https://soundcloud.com/daesu_wav/daesu-neorave-destruction-dj-promo-mix",
    "mix2_titel": "",
    "mix2_info": "",
    "mix2_link": "",
    "video_titel": "",
    "video_link": "",
    "releases": "Stay Up Forever\nERROR303\nTrashtek (MASS London)\nNew Glam\nANGST",
-   "highlights": "Nexus Paris – Ace Ventura\nNexus Paris – Weird Planet w/ DICA, TEOKAD, Jean Terechokova\nMultiple shows in Berlin incl. MaHalla\nFlowers & Bees · Kinky One · United Kinkdom\nOdonien · Helios37 · Garagen Club (Cologne)\nTrier",
+   "highlights": "08.05.2026 | HYPERRAVE w/ DICA & VAENT | Garagen Club, Cologne, GER\n2025 | Bi-Weekly Events w/ my label HYPERRAVE | Castell, Cologne, GER\n27.09.2025 | Krawall x Operation 51 x Bassbusters | Kulturschlachthof, Düsseldorf, GER\n09.08.2025 | Away Into Another World | MaHalla, Berlin, GER\n04.04.2025 | Ehrenklub | Odonien, Cologne, GER\n20.09.2024 | HYPERRAVE w/ Prauze | Domhof, Cologne, GER\n05.07.2024 | Flowers & Bees | Delta, Essen, GER\n13.01.2024 | Weird Planet x Le Nexus w/ DICA, TEOKAD, Jean Terechokova | Nexus, Paris, FR\n22.09.2023 | Nexus Trance w/ Ace Ventura | Nexus, Paris, FR\n02.07.2023 | Amsterdam Techno Records",
    "support": "Perc, Trym, Patrick Mason, Dyen, JKS, Mayeul, DICA, TEOKAD, Stay Up Forever crew",
    "rider_technik": "2× booth monitors with separate volume control\nSturdy table at hip height",
    "rider_hospitality": "Water + drinks at the booth\nAccommodation for travel over 3 h\nTravel costs by arrangement",
@@ -124,14 +128,64 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
    "presse_link": "",
    "gigs": [
     {
-     "datum": "2026-11-20",
-     "event": "HYPERRAVE x AESTHETIC",
-     "ort": "Garagen Club, Cologne"
+     "datum": "2023-07-02",
+     "event": "Amsterdam Techno Records",
+     "ort": ""
     },
     {
-     "datum": "2026-11-20",
-     "event": "Nexus Trance Night",
-     "ort": "Nexus, Paris"
+     "datum": "2023-09-22",
+     "event": "Nexus Trance w/ Ace Ventura",
+     "ort": "Nexus, Paris, FR"
+    },
+    {
+     "datum": "2024-01-13",
+     "event": "Weird Planet x Le Nexus w/ DICA, TEOKAD, Jean Terechokova",
+     "ort": "Nexus, Paris, FR"
+    },
+    {
+     "datum": "2024-07-05",
+     "event": "Flowers & Bees",
+     "ort": "Delta, Essen, GER"
+    },
+    {
+     "datum": "2024-09-20",
+     "event": "HYPERRAVE w/ Prauze",
+     "ort": "Domhof, Cologne, GER"
+    },
+    {
+     "datum": "2025-03-15",
+     "event": "PM93 Hard Trance",
+     "ort": "PM93, Essen, GER"
+    },
+    {
+     "datum": "2025-04-04",
+     "event": "Ehrenklub",
+     "ort": "Odonien, Cologne, GER"
+    },
+    {
+     "datum": "2025-08-02",
+     "event": "BzzBzz",
+     "ort": "Club Z, Cologne, GER"
+    },
+    {
+     "datum": "2025-08-09",
+     "event": "Away Into Another World",
+     "ort": "MaHalla, Berlin, GER"
+    },
+    {
+     "datum": "2025-09-27",
+     "event": "Krawall x Operation 51 x Bassbusters",
+     "ort": "Kulturschlachthof, Düsseldorf, GER"
+    },
+    {
+     "datum": "2025-10-18",
+     "event": "StaubxSchatten",
+     "ort": "Alter Schlachthof, Düsseldorf, GER"
+    },
+    {
+     "datum": "2025-11-14",
+     "event": "Flowe",
+     "ort": ""
     }
    ]
   },
@@ -166,7 +220,7 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
    "gigs": []
   }
  ],
- "stand": "2026-11-13"
+ "stand": "2026-11-15"
 }
 </script>
 <!-- ===== ENDE EPK-DATEN ===== -->
@@ -284,7 +338,10 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
     $("sup").innerHTML=sup.length?`<b>Supported by</b>${esc(sup.join(" · "))}`:"";show("sup",sup.length>0);
     show("secRel",rel.length>0||sup.length>0);
     const hl=lines(D.highlights);
-    $("hl").innerHTML=hl.map(x=>`<li>${esc(x)}</li>`).join("");show("secHl",hl.length>0);
+    const hlRow=x=>{const p=x.split("|").map(s=>s.trim());if(p.length<2)return`<li>${esc(x)}</li>`;
+      const dm=p[0].match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})$/);const d=dm?fmt(`${dm[3]}-${dm[2].padStart(2,"0")}-${dm[1].padStart(2,"0")}`):p[0];
+      return`<li class="hlr"><span class="dt">${esc(d)}</span><span>${esc(p[1])}</span><span class="v">${esc(p.slice(2).join(", "))}</span></li>`};
+    $("hl").innerHTML=hl.map(hlRow).join("");show("secHl",hl.length>0);
     const today=new Date().toISOString().slice(0,10);
     const gigs=(Array.isArray(D.gigs)?D.gigs:[]).filter(x=>x&&x.datum).sort((a,b)=>String(a.datum).localeCompare(String(b.datum)));
     const li=x=>`<li><span class="dt">${esc(fmt(x.datum))}</span><span>${esc(x.event)}</span><span class="v">${esc(x.ort||"")}</span></li>`;
