@@ -38,7 +38,13 @@ h2{font:600 13px var(--mono);letter-spacing:.18em;text-transform:uppercase;color
 .facts{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:20px}
 .facts div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
 .facts div:first-child{border-top:0}
-.facts b{color:var(--mut);font-weight:400}
+.facts b{color:var(--mut);font-weight:400;flex-shrink:0}
+.facts span{text-align:right;margin-left:auto}
+.bk{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px}
+.bk a{min-width:200px;text-align:center;justify-content:center;font:700 16px var(--mono);letter-spacing:.14em;padding:16px 28px;border-radius:12px;text-decoration:none}
+.bk a.ig{background:var(--acid);color:#000;border:1px solid var(--acid)}
+.bk a.ml{background:transparent;color:var(--txt);border:1px solid var(--txt)}
+.bk a:hover{transform:translateY(-2px)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
 .card{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;display:block;transition:.15s}
 a.card:hover{border-color:var(--acid);transform:translateY(-2px)}
@@ -113,7 +119,7 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
    "rider_technik": "2× booth monitors with separate volume control\nSturdy table at hip height",
    "rider_hospitality": "Water + drinks at the booth\nAccommodation for travel over 3 h\nTravel costs by arrangement",
    "booking_mail": "daesu@outlook.de",
-   "instagram": "",
+   "instagram": "daesu.vectra",
    "soundcloud": "https://soundcloud.com/daesu_wav",
    "presse_link": "",
    "gigs": [
@@ -230,11 +236,8 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
 </div></section>
 
 <section id="booking" class="contact" style="border-bottom:0"><div class="wrap">
-  <div class="eyebrow" id="bookEyebrow">Booking</div>
-  <p class="big">Let's set your dancefloor on fire.</p>
-  <div class="mail" id="mail"></div>
-  <button class="copy" id="cp">Copy email</button>
-  <div class="cta" style="justify-content:center;margin-top:24px" id="social"></div>
+  <p class="big">BOOKING</p>
+  <div class="bk" id="bk"></div>
 </div></section>
 
 <footer id="foot"></footer>
@@ -293,20 +296,16 @@ footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
     $("tech").innerHTML=tech.map(x=>`<li>${esc(x)}</li>`).join("");show("cTech",tech.length>0);
     $("hosp").innerHTML=hosp.map(x=>`<li>${esc(x)}</li>`).join("");show("cHosp",hosp.length>0);
     show("secRider",tech.length+hosp.length>0);
-    $("bookEyebrow").textContent="Booking · "+name;
-    if(D.booking_mail){$("mail").textContent=D.booking_mail;show("cp",true)}else{$("mail").textContent="Booking via Instagram";show("cp",false)}
-    const soc=[];const ig=String(D.instagram||"").replace(/^@/,"");
-    if(ig)soc.push(`<a class="btn" href="https://instagram.com/${encodeURIComponent(ig)}" target="_blank" rel="noopener">Instagram @${esc(ig)}</a>`);
-    if(url(D.soundcloud))soc.push(`<a class="btn" href="${esc(url(D.soundcloud))}" target="_blank" rel="noopener">SoundCloud</a>`);
-    $("social").innerHTML=soc.join("");
+    const ig=String(D.instagram||"").replace(/^https?:\/\/(www\.)?instagram\.com\//,"").replace(/^@/,"").replace(/\/.*$/,"");
+    const bk=[];
+    if(ig)bk.push(`<a class="ig" href="https://instagram.com/${encodeURIComponent(ig)}" target="_blank" rel="noopener">INSTAGRAM</a>`);
+    if(D.booking_mail)bk.push(`<a class="ml" href="mailto:${esc(D.booking_mail)}?subject=${encodeURIComponent("Booking request – "+name)}">MAIL</a>`);
+    $("bk").innerHTML=bk.join("");show("booking",bk.length>0);
     $("foot").textContent=`© ${new Date().getFullYear()} ${ALIASES.map(a=>a.artist||a.name).filter(Boolean).join(" · ")} · HYPERRAVE${RAW.stand?" · Updated "+fmt(RAW.stand):""}`;
   }
   function pick(){const h=location.hash.slice(1);const D=ALIASES.find(a=>a.id===h)||ALIASES[0];render(D)}
   window.addEventListener("hashchange",()=>{pick();window.scrollTo({top:0})});
   $("bookJump").addEventListener("click",e=>{e.preventDefault();$("booking").scrollIntoView({behavior:"smooth"})});
-  $("cp").addEventListener("click",async e=>{const t=$("mail").textContent.trim();
-    try{await navigator.clipboard.writeText(t);e.target.textContent="Copied ✓"}catch(_){const r=document.createRange();r.selectNodeContents($("mail"));const s=getSelection();s.removeAllRanges();s.addRange(r);e.target.textContent="Selected – press Ctrl/Cmd+C"}
-    setTimeout(()=>e.target.textContent="Copy email",2000)});
   pick();
 })();
 </script>
