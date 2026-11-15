@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EPK – DAESU &amp; Tony Vectra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   EPK – alles was du ändern musst, steht in den Kommentaren
+   "EDIT:" bzw. in eckigen Klammern [ ... ]
+   ============================================================ */
+:root{--bg:#0a0a0c;--p:#131317;--line:#26262e;--txt:#efeff3;--mut:#8d8d9a;--acid:#c6ff3d;--mono:'JetBrains Mono',monospace;--sans:'Space Grotesk',system-ui,sans-serif}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.55}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 22px}
+.hero{min-height:78vh;display:flex;flex-direction:column;justify-content:flex-end;padding:60px 0 50px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-20%;background:
+  radial-gradient(circle at 80% 20%,rgba(198,255,61,.18),transparent 45%),
+  repeating-linear-gradient(90deg,transparent 0 38px,rgba(198,255,61,.05) 38px 39px);pointer-events:none}
+.hero .wave{position:absolute;right:22px;top:40px;opacity:.9}
+.eyebrow{font:600 12px var(--mono);letter-spacing:.2em;color:var(--acid);text-transform:uppercase}
+h1{font-size:clamp(54px,11vw,128px);line-height:.9;margin:14px 0 18px;letter-spacing:-.03em;font-weight:700}
+.tagline{font-size:clamp(18px,2.4vw,22px);max-width:640px;color:#d6d6de;margin:0}
+.genres{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.genres span{font:13px var(--mono);border:1px solid var(--acid);color:var(--acid);padding:5px 11px;border-radius:20px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:10px;border:1px solid var(--line);background:var(--p)}
+.btn.p{background:var(--acid);color:#000;border-color:var(--acid)}
+.btn:hover{border-color:var(--acid)}
+section{padding:64px 0;border-bottom:1px solid var(--line)}
+h2{font:600 13px var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--acid);margin:0 0 24px}
+.bio{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+@media(max-width:760px){.bio{grid-template-columns:1fr}}
+.bio p{margin:0 0 14px;font-size:17px}
+.facts{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:20px}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:15px}
+.facts div:first-child{border-top:0}
+.facts b{color:var(--mut);font-weight:400}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:20px;text-decoration:none;display:block;transition:.15s}
+a.card:hover{border-color:var(--acid);transform:translateY(-2px)}
+.card .k{font:12px var(--mono);color:var(--mut);text-transform:uppercase;letter-spacing:.1em}
+.card .t{font-size:19px;font-weight:600;margin:8px 0 6px}
+.card .d{color:var(--mut);font-size:14px}
+.card .go{color:var(--acid);font:600 13px var(--mono);margin-top:14px}
+.gigs{list-style:none;padding:0;margin:0}
+.gigs li{display:grid;grid-template-columns:110px 1fr auto;gap:16px;padding:14px 0;border-top:1px solid var(--line);align-items:baseline}
+.gigs li:first-child{border-top:0}
+.gigs .dt{font:14px var(--mono);color:var(--acid)}
+.gigs .v{color:var(--mut);font-size:14px}
+@media(max-width:600px){.gigs li{grid-template-columns:1fr}}
+.photos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.ph{aspect-ratio:4/5;border-radius:12px;border:1px dashed var(--line);display:flex;align-items:center;justify-content:center;color:var(--mut);font:13px var(--mono);text-align:center;padding:10px;background:var(--p);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+.rider{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:700px){.rider{grid-template-columns:1fr}}
+.rider ul{margin:0;padding-left:18px}
+.rider li{margin-bottom:6px}
+.contact{text-align:center;padding:80px 0}
+.contact .big{font-size:clamp(30px,5vw,48px);font-weight:700;margin:0 0 10px}
+.contact .mail{font:600 18px var(--mono);color:var(--acid);user-select:all}
+.copy{margin-top:14px;background:none;border:1px solid var(--line);color:var(--txt);padding:8px 14px;border-radius:8px;cursor:pointer;font:13px var(--sans)}
+.hide{display:none!important}
+.rel{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px}
+.rel div{background:var(--p);border:1px solid var(--line);border-radius:14px;padding:18px}
+.rel b{display:block;font-size:19px;letter-spacing:-.01em}
+.rel span{display:block;color:var(--mut);font-size:13px;margin-top:4px}
+.sup{margin:22px 0 0;font-size:16px;color:#d6d6de}
+.sup b{color:var(--acid);font:600 12px var(--mono);letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:6px}
+.hl{list-style:none;padding:0;margin:0}
+.hl li{padding:13px 0;border-top:1px solid var(--line);font-size:17px}
+.hl li:first-child{border-top:0}
+.tabs{position:sticky;top:0;z-index:10;background:rgba(10,10,12,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;align-items:center;gap:8px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.tabs .lbl{font:600 12px var(--mono);letter-spacing:.16em;color:var(--mut);text-transform:uppercase;margin-right:8px}
+.tabs a{font:600 15px var(--sans);text-decoration:none;color:var(--mut);padding:8px 16px;border-radius:999px;border:1px solid var(--line)}
+.tabs a:hover{color:var(--txt);border-color:var(--acid)}
+.tabs a.on{background:var(--acid);color:#000;border-color:var(--acid)}
+footer{padding:28px 0;color:var(--mut);font:12px var(--mono);text-align:center}
+</style>
+</head>
+<body>
+
+<!-- ===== EPK-DATEN: werden automatisch aus der Gig Engine aktualisiert (Tab "EPK", alle Aliase, Inhalte auf Englisch) ===== -->
+<script id="epk-data" type="application/json">
+{
+ "aliases": [
+  {
+   "id": "daesu",
+   "artist": "DAESU",
+   "tagline": "Old-school energy for today's dancefloors: acid techno, hardgroove and trance with the punch of the 90s and 2000s.",
+   "genres": "Acid Techno, Neorave, Hard Trance, Proper Techno - Pure Rave Music",
+   "bio": "DJ and producer from Cologne, Germany, and founder of HYPERRAVE, a party series and label for old-school-inspired, genre-fluid electronic music.\n\nHis sets draw a line from UK acid techno and 90s German techno through hardgroove to hard trance: driving, hypnotic, full of 303 lines and goosebump moments.\n\nReleases on labels like: Stay Up Forever, ERROR303, New Glam, Trashtek, ANGST",
+   "basis": "Cologne, Germany",
+   "bpm": "140-160",
+   "setlaenge": "1–3 h · warm-up to closing",
+   "setup": "Preferably Allen & Heath Xone:92/96",
+   "reise": "International",
+   "mix1_titel": "",
+   "mix1_info": "",
+   "mix1_link": "",
+   "mix2_titel": "",
+   "mix2_info": "",
+   "mix2_link": "",
+   "video_titel": "",
+   "video_link": "",
+   "releases": "Stay Up Forever\nERROR303\nTrashtek (MASS London)\nNew Glam\nANGST",
+   "highlights": "Nexus Paris – Ace Ventura\nNexus Paris – Weird Planet w/ DICA, TEOKAD, Jean Terechokova\nMultiple shows in Berlin incl. MaHalla\nFlowers & Bees · Kinky One · United Kinkdom\nOdonien · Helios37 · Garagen Club (Cologne)\nTrier",
+   "support": "Perc, Trym, Patrick Mason, Dyen, JKS, Mayeul, DICA, TEOKAD, Stay Up Forever crew",
+   "rider_technik": "2× booth monitors with separate volume control\nSturdy table at hip height",
+   "rider_hospitality": "Water + drinks at the booth\nAccommodation for travel over 3 h\nTravel costs by arrangement",
+   "booking_mail": "daesu@outlook.de",
+   "instagram": "",
+   "soundcloud": "https://soundcloud.com/daesu_wav",
+   "presse_link": "",
+   "gigs": [
+    {
+     "datum": "2026-11-20",
+     "event": "HYPERRAVE x AESTHETIC",
+     "ort": "Garagen Club, Cologne"
+    },
+    {
+     "datum": "2026-11-20",
+     "event": "Nexus Trance Night",
+     "ort": "Nexus, Paris"
+    }
+   ]
+  },
+  {
+   "id": "tonyvectra",
+   "artist": "Tony Vectra",
+   "tagline": "Tony Vectra delivers raw, driving 90s-rooted acid techno straight from Cologne, with hardgroove punch and zero filler.",
+   "genres": "Acid Techno, Oldschool Techno, 90s Techno, Proper Techno, Hardgroove",
+   "bio": "Tony Vectra is a Cologne-based DJ working in the spirit of oldschool acid techno and 90s techno. His sets are raw, driving and built on hardgroove momentum, in the tradition of proper techno and the Stay Up Forever school of sound.\n\nHe is the founder of HYPERRAVE, a party series and label in Cologne dedicated to old-school-inspired, genre-fluid electronic music. As Tony Vectra, he keeps the focus on stripped-back, uncompromising techno, a distinct lane from his other aliases.",
+   "basis": "Cologne, Germany",
+   "bpm": "",
+   "setlaenge": "",
+   "setup": "Preferably Allen & Heath Xone:92/96",
+   "reise": "International",
+   "mix1_titel": "",
+   "mix1_info": "",
+   "mix1_link": "",
+   "mix2_titel": "",
+   "mix2_info": "",
+   "mix2_link": "",
+   "video_titel": "",
+   "video_link": "",
+   "releases": "",
+   "highlights": "",
+   "support": "",
+   "rider_technik": "2× booth monitors with separate volume control\nSturdy table at hip height",
+   "rider_hospitality": "Water + drinks at the booth\nAccommodation for travel over 3 h\nTravel costs by arrangement",
+   "booking_mail": "",
+   "instagram": "",
+   "soundcloud": "",
+   "presse_link": "",
+   "gigs": []
+  }
+ ],
+ "stand": "2026-11-13"
+}
+</script>
+<!-- ===== ENDE EPK-DATEN ===== -->
+
+<nav class="tabs"><div class="wrap"><span class="lbl">Alias</span><span id="tabs" style="display:flex;gap:8px;flex-wrap:wrap"></span></div></nav>
+
+<header class="hero"><div class="wrap">
+  <svg class="wave" width="180" height="60" viewBox="0 0 180 60" aria-hidden="true"><path d="M0 30 Q15 0 30 30 T60 30 T90 30 T120 30 T150 30 T180 30" fill="none" stroke="#c6ff3d" stroke-width="2"/></svg>
+  <div class="eyebrow" id="eyebrow">DJ · HYPERRAVE</div>
+  <h1 id="artist">[Artist name]</h1>
+  <p class="tagline" id="tagline"></p>
+  <div class="genres" id="genres"></div>
+  <div class="cta">
+    <a class="btn p" id="heroMix" href="#" target="_blank" rel="noopener">▶ Latest Mix</a>
+    <a class="btn" href="#" id="bookJump">Book now</a>
+  </div>
+</div></header>
+
+<section id="secAbout"><div class="wrap">
+  <h2>About</h2>
+  <div class="bio"><div id="bio"></div><div class="facts" id="facts"></div></div>
+</div></section>
+
+<section id="secMedia"><div class="wrap">
+  <h2>Listen & Watch</h2>
+  <div class="cards" id="media"></div>
+</div></section>
+
+<section id="secRel"><div class="wrap">
+  <h2>Releases</h2>
+  <div class="rel" id="rel"></div>
+  <p class="sup" id="sup"></p>
+</div></section>
+
+<section id="secHl"><div class="wrap">
+  <h2>Selected Shows</h2>
+  <ul class="hl" id="hl"></ul>
+</div></section>
+
+<section id="secUp"><div class="wrap">
+  <h2>Upcoming</h2>
+  <ul class="gigs" id="up"></ul>
+</div></section>
+
+<section id="secPast"><div class="wrap">
+  <h2>Past Shows</h2>
+  <ul class="gigs" id="past"></ul>
+</div></section>
+
+<!-- ===== PRESS PHOTOS (Bilder baut Claude fest ein) ===== -->
+<section id="secPhotos"><div class="wrap">
+  <h2>Press Photos</h2>
+  <div class="photos" id="photos">
+    <div class="ph">Press photo coming soon</div>
+    <div class="ph">Press photo coming soon</div>
+    <div class="ph">Live photo coming soon</div>
+  </div>
+  <p id="presse" style="color:var(--mut);font-size:14px;margin-top:14px"></p>
+</div></section>
+
+<section id="secRider"><div class="wrap">
+  <h2>Tech & Hospitality Rider</h2>
+  <div class="rider">
+    <div class="card" id="cTech"><div class="k">Technical</div><ul style="margin-top:12px" id="tech"></ul></div>
+    <div class="card" id="cHosp"><div class="k">Hospitality</div><ul style="margin-top:12px" id="hosp"></ul></div>
+  </div>
+</div></section>
+
+<section id="booking" class="contact" style="border-bottom:0"><div class="wrap">
+  <div class="eyebrow" id="bookEyebrow">Booking</div>
+  <p class="big">Let's set your dancefloor on fire.</p>
+  <div class="mail" id="mail"></div>
+  <button class="copy" id="cp">Copy email</button>
+  <div class="cta" style="justify-content:center;margin-top:24px" id="social"></div>
+</div></section>
+
+<footer id="foot"></footer>
+
+<script>
+(function(){
+  let RAW={};try{RAW=JSON.parse(document.getElementById("epk-data").textContent||"{}")}catch(e){RAW={}}
+  const ALIASES=(Array.isArray(RAW.aliases)&&RAW.aliases.length)?RAW.aliases:[{id:"artist",...RAW}];
+  const $=id=>document.getElementById(id);
+  const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const url=u=>/^https?:\/\//i.test(u||"")?u:"";
+  const show=(id,on)=>$(id).classList.toggle("hide",!on);
+  const lines=s=>String(s||"").split("\n").map(x=>x.trim()).filter(Boolean);
+  const MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  const fmt=d=>{const m=String(d).match(/^(\d{4})-(\d{2})-(\d{2})$/);return m?`${+m[3]} ${MON[+m[2]-1]} ${m[1]}`:d};
+  const idOk=s=>/^[A-Za-z0-9-]+$/.test(s||"");
+  $("tabs").innerHTML=ALIASES.map(a=>`<a href="#${idOk(a.id)?a.id:""}" data-id="${esc(a.id)}">${esc(a.artist||a.name||a.id)}</a>`).join("");
+  if(ALIASES.length<2)$("tabs").closest("nav").classList.add("hide");
+
+  function render(D){
+    document.querySelectorAll("#tabs a").forEach(a=>a.classList.toggle("on",a.dataset.id===D.id));
+    const name=D.artist||D.name||"[Artist name]";
+    document.title=name+" – EPK";
+    $("artist").textContent=name;
+    $("eyebrow").textContent=["DJ",(D.basis||"").split(",")[0],"HYPERRAVE"].filter(Boolean).join(" · ");
+    $("tagline").textContent=D.tagline||"";show("tagline",!!D.tagline);
+    const g=String(D.genres||"").split(",").map(x=>x.trim()).filter(Boolean);
+    $("genres").innerHTML=g.map(x=>`<span>${esc(x)}</span>`).join("");
+    const m1=url(D.mix1_link)||url(D.soundcloud);
+    $("heroMix").href=m1||"#";show("heroMix",!!m1);
+    const bio=String(D.bio||"").split(/\n\s*\n/).filter(x=>x.trim());
+    $("bio").innerHTML=bio.map(p=>`<p>${esc(p.trim()).replace(/\n/g,"<br>")}</p>`).join("");
+    const facts=[["Based in",D.basis],["Sound",g.slice(0,3).join(" · ")],["BPM",D.bpm],["Set length",D.setlaenge],["Setup",D.setup],["Travel",D.reise]].filter(f=>f[1]);
+    $("facts").innerHTML=facts.map(([k,v])=>`<div><b>${k}</b><span>${esc(v)}</span></div>`).join("");
+    show("facts",facts.length>0);show("secAbout",bio.length>0||facts.length>0);
+    const media=[];
+    [[D.mix1_titel,D.mix1_info,D.mix1_link],[D.mix2_titel,D.mix2_info,D.mix2_link]].forEach(([t,i,l])=>{if(url(l))media.push(`<a class="card" href="${esc(url(l))}" target="_blank" rel="noopener"><div class="k">Mix${i?" · "+esc(i):""}</div><div class="t">${esc(t||"Mix")}</div><div class="go">Listen →</div></a>`)});
+    if(url(D.video_link))media.push(`<a class="card" href="${esc(url(D.video_link))}" target="_blank" rel="noopener"><div class="k">Video</div><div class="t">${esc(D.video_titel||"Live set")}</div><div class="d">What a set sounds like in front of a crowd.</div><div class="go">Watch video →</div></a>`);
+    $("media").innerHTML=media.join("");show("secMedia",media.length>0);
+    const rel=lines(D.releases).map(x=>x.split("|").map(s=>s.trim()));
+    $("rel").innerHTML=rel.map(([lab,t,y])=>`<div><b>${esc(lab)}</b>${t||y?`<span>${esc([t,y].filter(Boolean).join(" · "))}</span>`:""}</div>`).join("");
+    show("rel",rel.length>0);
+    const sup=String(D.support||"").split(",").map(x=>x.trim()).filter(Boolean);
+    $("sup").innerHTML=sup.length?`<b>Supported by</b>${esc(sup.join(" · "))}`:"";show("sup",sup.length>0);
+    show("secRel",rel.length>0||sup.length>0);
+    const hl=lines(D.highlights);
+    $("hl").innerHTML=hl.map(x=>`<li>${esc(x)}</li>`).join("");show("secHl",hl.length>0);
+    const today=new Date().toISOString().slice(0,10);
+    const gigs=(Array.isArray(D.gigs)?D.gigs:[]).filter(x=>x&&x.datum).sort((a,b)=>String(a.datum).localeCompare(String(b.datum)));
+    const li=x=>`<li><span class="dt">${esc(fmt(x.datum))}</span><span>${esc(x.event)}</span><span class="v">${esc(x.ort||"")}</span></li>`;
+    const up=gigs.filter(x=>x.datum>=today),past=gigs.filter(x=>x.datum<today).reverse();
+    $("up").innerHTML=up.map(li).join("");show("secUp",up.length>0);
+    $("past").innerHTML=past.map(li).join("");show("secPast",past.length>0);
+    $("presse").innerHTML=url(D.presse_link)?`High-res photos: <a href="${esc(url(D.presse_link))}" target="_blank" rel="noopener" style="color:var(--acid)">Download folder</a>`:"";
+    const tech=lines(D.rider_technik),hosp=lines(D.rider_hospitality);
+    $("tech").innerHTML=tech.map(x=>`<li>${esc(x)}</li>`).join("");show("cTech",tech.length>0);
+    $("hosp").innerHTML=hosp.map(x=>`<li>${esc(x)}</li>`).join("");show("cHosp",hosp.length>0);
+    show("secRider",tech.length+hosp.length>0);
+    $("bookEyebrow").textContent="Booking · "+name;
+    if(D.booking_mail){$("mail").textContent=D.booking_mail;show("cp",true)}else{$("mail").textContent="Booking via Instagram";show("cp",false)}
+    const soc=[];const ig=String(D.instagram||"").replace(/^@/,"");
+    if(ig)soc.push(`<a class="btn" href="https://instagram.com/${encodeURIComponent(ig)}" target="_blank" rel="noopener">Instagram @${esc(ig)}</a>`);
+    if(url(D.soundcloud))soc.push(`<a class="btn" href="${esc(url(D.soundcloud))}" target="_blank" rel="noopener">SoundCloud</a>`);
+    $("social").innerHTML=soc.join("");
+    $("foot").textContent=`© ${new Date().getFullYear()} ${ALIASES.map(a=>a.artist||a.name).filter(Boolean).join(" · ")} · HYPERRAVE${RAW.stand?" · Updated "+fmt(RAW.stand):""}`;
+  }
+  function pick(){const h=location.hash.slice(1);const D=ALIASES.find(a=>a.id===h)||ALIASES[0];render(D)}
+  window.addEventListener("hashchange",()=>{pick();window.scrollTo({top:0})});
+  $("bookJump").addEventListener("click",e=>{e.preventDefault();$("booking").scrollIntoView({behavior:"smooth"})});
+  $("cp").addEventListener("click",async e=>{const t=$("mail").textContent.trim();
+    try{await navigator.clipboard.writeText(t);e.target.textContent="Copied ✓"}catch(_){const r=document.createRange();r.selectNodeContents($("mail"));const s=getSelection();s.removeAllRanges();s.addRange(r);e.target.textContent="Selected – press Ctrl/Cmd+C"}
+    setTimeout(()=>e.target.textContent="Copy email",2000)});
+  pick();
+})();
+</script>
+</body>
+</html>
